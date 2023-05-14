@@ -28,3 +28,25 @@
 //     }
 // }
 
+
+
+fetch("https://randomuser.me/api/")
+    .then((res) => res.json())
+    .then((user) => {
+        console.log(user.results[0]);
+        let userOne = user.results[0];
+        document.getElementById("user").innerHTML = `
+        <div>
+            <img src=${userOne.picture.large} class="card-img-top" alt=${userOne.name}>
+            <div class="card-body">
+                <h5 class="card-title">${userOne.name.first} ${userOne.name.last}</h5>
+                <p class="card-text">
+                ${userOne.cell}
+                ${userOne.email}
+                ${userOne.cell}
+                </p>
+                <a href="#" class="btn btn-primary">${userOne.registered.date}</a>
+            </div>
+        </div>
+    `
+    });
